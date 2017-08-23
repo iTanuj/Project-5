@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Neighbourhood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="headiv">
+        <div id='ham'>&#x2630;</div>
+      </div>
+    </header>
+
+    <div class="sidemenu">
+      <div class="list-heading">
+        <h2>Favourite Places</h2>
+      </div><br />
+
+      <input type="text" placeholder="Ex. Fort" id="search-box" data-bind="textInput: userInput, event: {keyup: filterMarkers}"/>
+      <br /><br />
+
+  		<ul class="places" data-bind="foreach: visiblePlaces">
+		    <li data-bind="text: locationName, click: $parent.fillInfoWindow"></li>
+  		</ul>
+    </div>
+
+    <div id="map"></div>
+    <!--<script>
+      var map;
+      function initMap() {
+        // Constructor creates a new map - only center and zoom are required.
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat:26.2182871,lng:78.18283079999999},
+          zoom: 14
+        });
+      }
+    </script>-->
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHcFu8d4ZtfLqRmom6c7s7cjCjECLxiu8&v=3&callback=startApp" onerror="googleErr()">
+    </script>
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/knockout-3.2.0.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

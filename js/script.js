@@ -190,18 +190,18 @@ var ViewModel = function() {
         self.Infowindow.marker.setAnimation(null);
     	}, 1500);
 			var foursqURL = 'https://api.foursquare.com/v2/venues/'+place.id()+'/photos?v=20170823&group=venue&client_id='+self.FSTOKEN+'&client_secret='+self.CS;
-			//var foursqURL = 'https://api.foursquare.com/v2/venues/'+place.id+'/photos?oauth_token=UFY0DJ3O52LPFAJ3NQXHLIEEVY0L5JHIQ33MYB3MKTE1KLIU&v=20170823&group=venue';
+			
 			if(place.imgURL() == undefined){
-			console.log("before json");
+			//console.log("before json");
 				$.getJSON(foursqURL).done(function(data) {
-					console.log("yoooooo")
+					//console.log("yoooooo")
 					var pref = data.response.photos.items[0].prefix;
 					var suff = data.response.photos.items[0].suffix;
 					var size = 'width300';
 
 					place.imgURL(pref+size+suff);
 					self.Infowindow.setContent(self.Infowindow.getContent()+'<img src="'+place.imgURL()+'" alt="Image could not be loaded."/>');
-
+					self.Infowindow.open(self.googleMap, place.marker());
 				}).fail(function() {
 					alert("There was an error with the Foursquare API call. Please refresh the page and try again to load Foursquare data.");
 				});

@@ -30,6 +30,7 @@ body {
   justify-content: center;
   border-radius: 6px;
   color: white;
+  -webkit-transition: .25s;
 }
 #ham:hover {
   background-color: #ff7100;

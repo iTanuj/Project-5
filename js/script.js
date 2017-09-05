@@ -190,7 +190,7 @@ var ViewModel = function() {
         self.Infowindow.marker.setAnimation(null);
     	}, 1500);
 			var foursqURL = 'https://api.foursquare.com/v2/venues/'+place.id()+'/photos?v=20170823&group=venue&client_id='+self.FSTOKEN+'&client_secret='+self.CS;
-			
+
 			if(place.imgURL() == undefined){
 			//console.log("before json");
 				$.getJSON(foursqURL).done(function(data) {
@@ -234,7 +234,7 @@ var Place = function(dataObj) {
 	this.imgURL = ko.observable();
 }
 
-function startApp(){
+window.startApp = function(){
 	ko.applyBindings(new ViewModel());
 }
 function googleErr(){

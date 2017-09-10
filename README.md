@@ -2,7 +2,10 @@
 Neighborhood Map Project for Udacity FSND
 
 ## Use
-Download this repo and open `index.html` file.
+1. Download this repo
+2. Extract contents of this zip file to a folder
+3. Go to that folder and open `index.html`
 
-## About
-This is a project for Udacity FSND, implementing use of Google Maps API and a third-party API (Foursquare) to show favourite places of my city.
+## Attributions
+- Google Maps API
+- Foursquare API

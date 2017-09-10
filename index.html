@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My Neighbourhood</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/styles.css"/>
-  </head>
-  <body>
-    <header>
-      <div class="headiv">
-        <div id='ham'>&#x2630;</div>
-      </div>
-    </header>
 
-    <div class="sidemenu">
-      <div class="list-heading">
-        <h2>Favourite Places</h2>
-      </div><br />
+<head>
+  <title>My Neighbourhood</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
 
-      <input type="text" placeholder="Ex. Fort" id="search-box" data-bind="textInput: userInput, event: {keyup: filterMarkers}"/>
-      <br /><br />
-
-  		<ul class="places" data-bind="foreach: visiblePlaces">
-		    <li data-bind="text: locationName, click: $parent.fillInfoWindow"></li>
-  		</ul>
+<body>
+  <header>
+    <div class="headiv" data-bind="style: {left: side()? '270px' : '0px'}">
+      <div id='ham' data-bind="click: toggSlide">&#x2630;</div>
     </div>
+  </header>
+  <div data-bind="css: { 'left': side}" class="sidemenu">
+    <div class="list-heading">
+      <h2>Favourite Places</h2>
+    </div><br>
 
-    <div id="map"></div>
+    <input type="text" placeholder="Ex. Fort" id="search-box" data-bind="textInput: userInput, event: {keyup: filterMarkers}" />
+    <br><br>
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHcFu8d4ZtfLqRmom6c7s7cjCjECLxiu8&v=3&callback=startApp" onerror="googleErr()">
-    </script>
-    <script src="js/libs/jquery.min.js"></script>
-    <script src="js/libs/knockout-3.2.0.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+    <ul class="places" data-bind="foreach: visiblePlaces">
+      <li data-bind="text: locationName, click: $parent.fillInfoWindow"></li>
+    </ul>
+  </div>
+
+  <div id="map" data-bind="style: {left: side()? '270px' : '0px'}"></div>
+
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/libs/knockout-3.2.0.js"></script>
+  <script src="js/places.js"></script>
+  <script src="js/script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHcFu8d4ZtfLqRmom6c7s7cjCjECLxiu8&v=3&callback=startApp" onerror="googleErr()">
+  </script>
+</body>
+
 </html>

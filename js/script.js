@@ -160,7 +160,7 @@ var ViewModel = function() {
 			var foursqURL = 'https://api.foursquare.com/v2/venues/'+place.id()+'/photos?v=20170823&group=venue&client_id='+self.FSTOKEN+'&client_secret='+self.CS;
 
 			// Condition to send ajax request only if image URL is not stored
-			if(place.imgURL() == undefined){
+			if(place.imgURL() === undefined){
 				$.getJSON(foursqURL).done(function(data) {
 					var pref = data.response.photos.items[0].prefix;
 					var suff = data.response.photos.items[0].suffix;
@@ -173,9 +173,9 @@ var ViewModel = function() {
 					alert("There was an error with the Foursquare API call. Please refresh the page and try again to load Foursquare data.");
 				});
 			}
-			self.Infowindow.setContent('<div class="loc-title"><b>' + place.marker().title + '</b></div>'+'<div>' + place.marker().position + '</div>'
-																+ '<div class="address">'+ place.address() +'</div>');
-			if(place.imgURL()!=undefined){
+			self.Infowindow.setContent('<div class="loc-title"><b>' + place.marker().title + '</b></div>'+'<div>' + 
+						   place.marker().position + '</div><div class="address">'+ place.address() +'</div>');
+			if(place.imgURL()!==undefined){
 				self.Infowindow.setContent(self.Infowindow.getContent()+'<img src="'+place.imgURL()+'" alt="Image could not be loaded."/>');
 			}
 			self.Infowindow.open(self.googleMap, place.marker());
@@ -185,7 +185,7 @@ var ViewModel = function() {
 				self.Infowindow.marker = null;
 			});
 		}
-	}
+	};
 };
 
 var Place = function(dataObj) {
@@ -195,11 +195,11 @@ var Place = function(dataObj) {
 	this.marker = ko.observable();
 	this.address = ko.observable(dataObj.address);
 	this.imgURL = ko.observable();
-}
+};
 
 window.startApp = function(){
 	ko.applyBindings(new ViewModel());
-}
+};
 function googleErr(){
 	alert("Google Maps API failed to load. Please try to refresh the page...");
 }
